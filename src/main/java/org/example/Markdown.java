@@ -11,9 +11,10 @@ import java.util.regex.Pattern;
 
 public class Markdown {
 
-    // ![](笔记图片\01 Markdown 语法-1.jpg)
-    private static final String regex = "!\\[.*?]\\((.*?)\\\\(.*?\\..*?)\\)"; // ["笔记图片", "01 Markdown 语法-1.jpg"]
+    // ![](笔记图片/01%20Markdown%20语法-1.jpg)
+    private static final String regex = "!\\[]\\((.*?)\\)"; // ["笔记图片/01%20Markdown%20语法-1.jpg"]
     private static final Pattern pattern = Pattern.compile(regex);
+    private static final String prefix = "https://gitee.com/kokoachino/picture-bed/raw/master/";
 
     public static void main(String[] args) {
         Path root = Paths.get("src\\main\\resources\\笔记");
@@ -43,8 +44,7 @@ public class Markdown {
             Matcher matcher = pattern.matcher(content); // 正则匹配
             String updatedContent = matcher.replaceAll(result -> { // 替换全部匹配
                 String g1 = result.group(1);
-                String g2 = result.group(2).replace(" ", "%20");
-                return "![](" + g1 + "/" + g2 + ")";
+                return "![](" + prefix + g1 + ")";
             });
             Files.write(path, updatedContent.getBytes()); // 写入更新后的字符串
         } catch (IOException e) {
