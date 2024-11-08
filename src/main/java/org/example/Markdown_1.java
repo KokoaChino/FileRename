@@ -11,10 +11,10 @@ import java.util.regex.Pattern;
 
 public class Markdown_1 { // 图片链接添加前缀
 
-    // ![](https://gitee.com/kokoachino/picture-bed/raw/master/笔记图片/02%20CSS-1.jpg)
-    private static final String regex = "!\\[]\\((.*?)\\)"; // ["https://gitee.com/kokoachino/picture-bed/raw/master/笔记图片/02%20CSS-1.jpg"]
+    // ![](笔记图片/13%20JavaJUC%20多线程-1.jpg)
+    private static final String regex = "!\\[]\\((.*?)\\)"; // ["笔记图片/13%20JavaJUC%20多线程-1.jpg"]
     private static final Pattern pattern = Pattern.compile(regex);
-    private static final String prefix = "../images/";
+    private static final String prefix = "https://gitee.com/kokoachino/picture-bed/raw/master/";
 
     public static void main(String[] args) {
         Path root = Paths.get("src\\main\\resources\\笔记");
