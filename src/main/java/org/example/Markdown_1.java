@@ -9,12 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Markdown {
+public class Markdown_1 { // 图片链接添加前缀
 
-    // ![](笔记图片/01%20Markdown%20语法-1.jpg)
-    private static final String regex = "!\\[]\\((.*?)\\)"; // ["笔记图片/01%20Markdown%20语法-1.jpg"]
+    // ![](https://gitee.com/kokoachino/picture-bed/raw/master/笔记图片/02%20CSS-1.jpg)
+    private static final String regex = "!\\[]\\((.*?)\\)"; // ["https://gitee.com/kokoachino/picture-bed/raw/master/笔记图片/02%20CSS-1.jpg"]
     private static final Pattern pattern = Pattern.compile(regex);
-    private static final String prefix = "https://gitee.com/kokoachino/picture-bed/raw/master/";
+    private static final String prefix = "../images/";
 
     public static void main(String[] args) {
         Path root = Paths.get("src\\main\\resources\\笔记");
@@ -35,7 +35,7 @@ public class Markdown {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        list.forEach(Markdown::dfs); // 递归操作
+        list.forEach(Markdown_1::dfs); // 递归操作
     }
 
     private static void edit(Path path) {
@@ -44,7 +44,8 @@ public class Markdown {
             Matcher matcher = pattern.matcher(content); // 正则匹配
             String updatedContent = matcher.replaceAll(result -> { // 替换全部匹配
                 String g1 = result.group(1);
-                return "![](" + prefix + g1 + ")";
+                String sub = g1.substring(g1.indexOf("笔记图片"));
+                return "![](" + prefix + sub + ")";
             });
             Files.write(path, updatedContent.getBytes()); // 写入更新后的字符串
         } catch (IOException e) {

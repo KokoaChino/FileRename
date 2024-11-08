@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.Objects;
 
 
-public class FileRename {
-    public static void run(File folder) { // 将文件夹内的所有文件重命名
+public class FileRename { // 将文件夹内的所有文件重命名
+    public static void run(File folder) {
         for (File f: Objects.requireNonNull(folder.listFiles(File::isDirectory))) run(f);
         File[] files = folder.listFiles(f -> {
             if (f.isFile() && f.getName().lastIndexOf('.') >= 0) {
