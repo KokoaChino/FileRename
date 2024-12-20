@@ -1,4 +1,4 @@
-package org.example;
+package org.example.markdown;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Connection;
