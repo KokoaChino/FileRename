@@ -17,9 +17,9 @@ public class Markdown_4 { // 提取所有图片至图床，并重命名
     // ![image-20241220120517337](C:\Users\Kokoa_Chino\AppData\Roaming\Typora\typora-user-images\image-20241220120517337.png)
     private static final String regex = "!\\[.*?]\\((.*?)\\)"; // ["C:\Users\Kokoa_Chino\AppData\Roaming\Typora\typora-user-images\image-20241220120517337.png"]
     private static final Pattern pattern = Pattern.compile(regex);
-    private static final String prefix = "https://gitee.com/kokoachino/picture-bed/raw/master/其他";
-    private static final String target = "C:\\Users\\Kokoa_Chino\\Desktop\\Learning materials\\图床\\其他";
-    private static final String name = "项目 AAA";
+    private static final String prefix = "https://gitee.com/kokoachino/picture-bed/raw/master/项目";
+    private static final String target = "C:\\Users\\Kokoa_Chino\\Desktop\\Learning materials\\图床\\项目";
+    private static final String name = "EchoScoringSystem 使用手册";
 
     public static void main(String[] args) {
         Path root = Paths.get("src\\main\\resources\\笔记");

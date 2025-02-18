@@ -19,7 +19,8 @@ public class FileRename { // 将文件夹内的所有文件重命名
         for (int i = 0; i < n; i++) {
             File f = files[i];
             String newName = folder.getName() + " " + String.format("%0" + m + "d", i + 1);
-            String type = f.getName().substring(f.getName().lastIndexOf('.'));
+//            String type = f.getName().substring(f.getName().lastIndexOf('.'));
+            String type = ".mp4";
             f.renameTo(new File(f.getParent() + "\\" + newName + type));
         }
     }
