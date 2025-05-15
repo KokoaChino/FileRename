@@ -6,10 +6,15 @@ import java.util.regex.Pattern;
 
 
 public class FileReorder { // 临时重新排序文件命名
-    public static void run(File root) {
-        File[] child = root.listFiles(); // 处理的文件夹
+
+    public static final String PATH = """
+            D:\\下载\\modified
+            """.trim();
+
+    public static void main(String[] args) {
+        File[] child = new File(PATH).listFiles();
         for (File ff: child) {
-            String pat = "混合"; // 匹配串
+            String pat = "混合";
             int cnt = 0;
             for (File f: ff.listFiles()) {
                 String type = f.getName().substring(f.getName().lastIndexOf('.'));
@@ -17,7 +22,7 @@ public class FileReorder { // 临时重新排序文件命名
                 if (name.startsWith(pat)) {
                     newName = "AAA" + name;
                 } else {
-                    Pattern pattern = Pattern.compile("(\\d{8}_\\d{6})"); // 正则匹配时间戳
+                    Pattern pattern = Pattern.compile("(\\d{8}_\\d{6})");
                     Matcher matcher = pattern.matcher(name);
                     if (matcher.find()) {
                         newName = "BBB" + matcher.group(1);

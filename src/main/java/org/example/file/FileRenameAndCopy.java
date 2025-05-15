@@ -7,11 +7,19 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 
-public class FileUtils { // 文件工具类
+public class FileRenameAndCopy { // 拷贝文件并重命名
 
-    public static void copyAndRenameFile(String sourceFilePath,
-                                         String targetDirPath,
-                                         String newFileName) { // 拷贝文件，并重命名
+    public static final String sourceFilePath = """
+            D:\\下载\\modified
+            """.trim();
+    public static final String targetDirPath = """
+            D:\\下载\\modified
+            """.trim();
+    public static final String newFileName = """
+            D:\\下载\\modified
+            """.trim();
+
+    public static void main(String[] args) {
         Path sourcePath = Paths.get(sourceFilePath);
         Path targetDir = Paths.get(targetDirPath);
         Path targetPath = targetDir.resolve(newFileName);
@@ -22,7 +30,7 @@ public class FileUtils { // 文件工具类
             }
             Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
